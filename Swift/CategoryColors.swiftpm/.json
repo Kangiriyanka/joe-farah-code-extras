@@ -1,0 +1,112 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "name": "Category 1",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#F5393C"
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "name": "Category 2",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#212095"
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000003",
+    "name": "Category 3",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#4A5EF61C"
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000004",
+    "name": "Category 4",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#D7AED7"
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000005",
+    "name": "Category 5",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#4BD"
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000006",
+    "name": "Category 6",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#EF8B76"
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000007",
+    "name": "Category 7",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#B1CF53"
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000008",
+    "name": "Category 8",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#DBE970"
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000009",
+    "name": "Category 9",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#3B897A"
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000010",
+    "name": "Category 10",
+    "categoryColor": {
+      "red": 0,
+      "green": 0,
+      "blue": 0,
+      "alpha": 1,
+      "hex": "#92860815"
+    }
+  }
+]

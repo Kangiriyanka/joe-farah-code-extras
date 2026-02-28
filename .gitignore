@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Xcode
+*.xcuserstate
+*.xcuserdata
+*.xcschememanagement.plist
+*.xcbkptlist
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.xcresult
+
+# SwiftPM / build
+.swiftpm/
+.build/
+Package.resolved
+
+# playgrounds
+*.playground/xcuserdata
