@@ -92,6 +92,8 @@ extension Color {
         switch hex.count {
         case 3:
             // not RGBA, but common shorthand (e.g. F00 → FF0000)
+            print(int)
+            print("Here")
             (r, g, b, a) = (
                 ((int >> 8) & 0xF) * 17,
                 ((int >> 4) & 0xF) * 17,
