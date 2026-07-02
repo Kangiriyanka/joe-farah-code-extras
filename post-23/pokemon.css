@@ -1,0 +1,73 @@
+.pkmn-container img  {
+    width: 15rem;
+    height: 15rem
+
+}
+
+
+.pkmn-input {
+
+    border: 3px solid #ea6565;
+    margin: 2px;
+    outline: none;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    
+
+}
+
+.pkmn-input:after {
+
+    content: "--";
+    top: 0;
+    left: 0;
+    position: absolute;
+
+    
+
+}
+
+.range-picker {
+
+    text-align: center;
+}
+
+.pkmn-button {
+    background: white;
+    border: 3px solid #ea6565;
+    border-radius: 50%;
+    padding: 2px;
+    width: 3rem;
+    height: 3rem;
+    transition: all 0.1s ease-in-out;
+    margin: 0.5rem;
+
+}
+
+.pkmn-button:hover {
+    transform: scale(1.10)
+}
+
+.pkmn-button:after {
+    position: "absolute";
+    
+    width: 10px;
+    height: 10px;
+    border: 0 0 1px 0 solid black;
+    content: ""
+}
+
+.pkmn-button:active {
+    background:  #e84343;
+}
+
+.pkmn-active {
+    background: #e84343db;
+}
+
+.bubble-picker {
+    margin: 2rem;
+    text-align: center;
+}
+
