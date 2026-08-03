@@ -1,0 +1,113 @@
+
+.mission-container {
+    padding: 0.4rem;
+  
+     /* Without this, the neighbor card will also expand as the default is align-items stretch */
+    align-items: start;
+    /* I tried row-gap, but it still gets pushed down. A fixed height on the card is one solution. */
+    row-gap: 1rem;
+
+}
+.mission-card {
+    background-color: #F1EAEA;
+    position: relative;
+    
+
+  
+    
+    h4,p {
+        color: #1F2937;
+    }
+   
+    transition: all 1s ease-in;
+    /* Prevent the neighbouring card from expanding */
+   
+
+}
+
+.mission-card::after {
+    position: absolute;
+    content: "";
+    width: 2rem;
+    height: 100%;
+    left: 0px;
+    
+
+}
+
+.mission-card:hover {
+
+    &::after {
+        left: -10px;
+    }
+
+}
+
+html.dark .mission-card {
+    background-color: #f1eaeae7;
+
+}
+
+.mission-sets {
+    font-size: 1rem;
+    color: gray;
+}
+
+.timer-menu {
+
+    transition: all 0.2s ease-in;
+    display:flex;
+  
+}
+
+.timer-btns-box {
+    display: flex;
+    justify-content: center;
+    gap: 0.1rem;
+    color: #1F2937;
+    margin-top: -0.rem;
+    button {
+          color: black;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.08);
+      
+            border-radius: 50%;
+          }
+
+    }
+   
+
+}
+    
+.time-displayer {
+
+    font-weight: semibold;
+    font-size: 1.8rem;
+    color: #1F2937;
+   
+
+
+
+
+}
+    
+.timer-title {
+    color: #1F2937;
+    padding: 0.1rem;
+}
+
+
+.remaining-sets {
+    font-size: 0.9rem;
+    text-align: center;
+     color: #1F2937
+}
+
+.total-formatted-seconds {
+    color: #1F2937
+}
+.sex {
+    font-size: 4rem important!;
+}
