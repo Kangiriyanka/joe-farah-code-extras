@@ -1,6 +1,6 @@
 
 import {formatMissionTime} from "./timehelpers"
-import TimerMenuV1 from "./TimerMenuV1"
+import TimerMenuV4 from "./TimerMenuV4"
 import {useState} from "preact/hooks"
 
 interface MissionProps {
@@ -13,7 +13,7 @@ interface MissionProps {
     clr: string,
 }
 
-export default function MissionCardV3({ title, workTime, restTime, prepTime, sets,clr} : MissionProps) {
+export default function MissionCardV6({ title, workTime, restTime, prepTime, sets,clr} : MissionProps) {
 
     const [isTapped, setIsTapped] = useState<boolean>(false)
     const showTimerMenu = () => {
@@ -44,7 +44,13 @@ export default function MissionCardV3({ title, workTime, restTime, prepTime, set
                 </div>
                 ) : (
 
-                 <TimerMenuV1 title ={title} workTime ={workTime} restTime={restTime} prepTime = {prepTime} sets= {sets} clr={clr}/>
+                 <TimerMenuV4
+                 title ={title} 
+                 workTime ={workTime} 
+                 restTime={restTime} 
+                 prepTime = {prepTime} 
+                 sets= {sets} 
+                 clr={clr}/>
             
                 )
                 

@@ -40,7 +40,7 @@ export default function MissionCardV4({ title, workTime, restTime, prepTime, set
                                 <div style = {{borderColor: `${clr}`}}className="w-[100%] border-1 border-r-0 border-b-0 border-l-0  border-dashed h-2 border-top-none"></div>
 
                 
-                 <span className="mission-sets italic"> {sets} set{sets > 1 ? "s" : ""} {formatMissionTime(workTime)}  </span>
+                 <span className="mission-sets italic"> {sets} set{sets > 1 ? "s" : ""}・{formatMissionTime(workTime)}  </span>
                 </div>
                 ) : (
 

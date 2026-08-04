@@ -40,7 +40,7 @@ export default function TimeFormatter() {
           onChange={e => {
 
             const value = Number(e.target.value)
-            if (value <= 86400) {
+            if (value <= 86400 && value >=1) {
               setTotalSeconds(value)
             }
 
@@ -48,40 +48,42 @@ export default function TimeFormatter() {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-7 border-1 rounded-md p-3">
-        <div className="flex flex-col text-center">
+      <div className="grid md:grid-cols-3  gap-7  p-3">
+
+       
+        <div className="flex flex-col text-center border-2 rounded-md p-1">
           <span>rawHours</span>
           {rawHours}
         </div>
 
-        <div className="flex flex-col text-center">
-          <span style={{color: " #308f4d"}}> flooredHours</span>
+        <div className="flex flex-col text-center border-2 rounded-md border-[#308f4d] rounded-md p-1">
+          <span > flooredHours</span>
           {flooredHours}
         </div>
 
-        <div className="flex flex-col text-center">
+        <div className="flex flex-col text-center border-2 rounded-md p-1">
           <span>secondsWithoutHours</span>
           {secondsWithoutHours}
         </div>
 
-        <div className="flex flex-col text-center">
+        <div className="flex flex-col text-center border-2 rounded-md p-1">
           <span>rawMinutes</span>
           {rawMinutes}
         </div>
 
 
-        <div className="flex flex-col text-center">
-          <span style={{color: " #308f4d;"}}>flooredMinutes</span>
+        <div className="flex flex-col text-center border-2 rounded-md border-[#308f4d] rounded-md p-1">
+          <span> flooredMinutes</span>
           {flooredMinutes}
         </div>
 
-        <div className="flex flex-col text-center">
-          <span style={{color: " #308f4d;"}}>remainingSeconds</span>
+        <div className="flex flex-col text-center border-2 rounded-md border-[#308f4d] rounded-md p-1">
+          <span >remainingSeconds</span>
           {seconds}
         </div>
       </div>
 
-      <div className="text-lg text-center mt-3">
+      <div className="text-xl text-center mt-3 ">
         Formatted Time: {formatMissionTime(totalSeconds)}
       </div>
 

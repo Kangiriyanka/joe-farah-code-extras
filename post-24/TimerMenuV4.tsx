@@ -1,5 +1,6 @@
+import { pathHasLocale } from "astro:i18n"
 import {formatTimerString} from "./timehelpers"
-import {useState, useEffect} from "preact/hooks"
+import {useState, useEffect, useRef} from "preact/hooks"
 
 interface TimerProps {
     title: string
@@ -12,12 +13,94 @@ interface TimerProps {
 
 type TimerPhase = "Starting in..." | "Working" | "Resting" | "Finished"
 
-export default function TimerMenuV2({sets, prepTime, restTime, workTime, clr}: TimerProps) {
+export default function TimerMenuVF({sets, prepTime, restTime, workTime, clr}: TimerProps) {
 
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
+    // prep, work, rest
     const [currentPhase, setCurrentPhase] = useState<TimerPhase>(prepTime ? "Starting in..." : "Working")
     const [remainingSets, setRemainingSets] = useState<number>(sets)
     const [timeLeft, setTimeLeft] = useState(prepTime ? prepTime : workTime)
+
+    // Audio instance we'll reuse
+    const prepSound = useRef<HTMLAudioElement | null>(null)
+    const workSound = useRef<HTMLAudioElement | null>(null)
+    const restSound = useRef<HTMLAudioElement | null>(null)
+  
+
+
+
+useEffect(() => {
+
+    prepSound.current = new Audio("/sounds/prep.wav")
+    workSound.current = new Audio("/sounds/work.wav")
+    restSound.current = new Audio("/sounds/rest.wav")
+
+    // Stop audio as soon as we unmount
+    return () => {
+        workSound.current?.pause()
+        workSound.current = null
+
+        restSound.current?.pause()
+        restSound.current = null
+
+        prepSound.current?.pause()
+        prepSound.current = null
+    }
+
+}, [])
+
+
+useEffect(() => {
+
+    if (!isPlaying || timeLeft > 5 || timeLeft < 1  )  {
+        workSound.current?.pause()
+        restSound.current?.pause()
+        return;
+    }
+
+    switch (currentPhase) {
+
+        case "Starting in...": 
+
+         if (prepSound.current) {
+            prepSound.current.currentTime = 0
+            prepSound.current.play()
+            
+            }
+        break;
+ 
+
+        
+        case "Working": 
+        
+                 if (workSound.current) {
+                    workSound.current.currentTime = 0
+                    workSound.current.play()
+                    
+                    }
+                  break;
+          
+
+       
+
+        case "Resting":
+            if (restSound.current) {
+            restSound.current.currentTime = 0
+            restSound.current.play()
+           
+            }
+
+             break;
+  
+
+
+    }
+
+
+
+
+}, [timeLeft, isPlaying])
+
 
     const handlePlay = (e: MouseEvent) => {
         e.stopPropagation()
@@ -37,10 +120,13 @@ export default function TimerMenuV2({sets, prepTime, restTime, workTime, clr}: T
         if (!isPlaying) return;
 
      const timer = setInterval(() => {
-        // Guard for the initial effect
-
+    
+    
+       
 
         setTimeLeft(prev => prev -1)
+
+
      }, 1000)
 
      return () => clearInterval(timer)
@@ -48,15 +134,24 @@ export default function TimerMenuV2({sets, prepTime, restTime, workTime, clr}: T
 
     }, [isPlaying])
 
+
     // useEffect for handling phase changes.
     useEffect(() => {
 
      // Edge case: the last work phase
      if (remainingSets == 0) {
-            setCurrentPhase(prepTime ? "Starting in..." : "Working")
-            setTimeLeft(prepTime ? prepTime : workTime)
+
+            setCurrentPhase("Finished")
             setIsPlaying(false)
-            setRemainingSets(sets)
+     
+            const timeout = setTimeout( () => {
+                setCurrentPhase(prepTime ? "Starting in..." : "Working")
+                setTimeLeft(prepTime ? prepTime : workTime)
+                setIsPlaying(false)
+                setRemainingSets(sets)
+            }, 2000)
+
+            return () => clearTimeout(timeout)
       }
 
     if (timeLeft != 0) return;
@@ -85,11 +180,22 @@ export default function TimerMenuV2({sets, prepTime, restTime, workTime, clr}: T
 
 
 
+  
+
     return (
         <div className="relative">
 
-           
-            
+            {currentPhase == "Finished" && (
+
+                    <div 
+                    style ={{backgroundColor: `${clr}`}}
+                    className=" flex items-center rounded-md justify-center m-auto z-2 absolute h-[100%] w-[100%]  text-5xl"> 
+                        Well done
+                    </div>
+
+
+            ) 
+            }
 
             {/* Title */}
             <div  className="flex flex-col rounded-md p-2" style ={{border: `0.5px dashed ${clr}`}}>

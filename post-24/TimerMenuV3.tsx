@@ -12,9 +12,10 @@ interface TimerProps {
 
 type TimerPhase = "Starting in..." | "Working" | "Resting" | "Finished"
 
-export default function TimerMenuV2({sets, prepTime, restTime, workTime, clr}: TimerProps) {
+export default function TimerMenuV3({sets, prepTime, restTime, workTime, clr}: TimerProps) {
 
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
+    // prep, work, rest
     const [currentPhase, setCurrentPhase] = useState<TimerPhase>(prepTime ? "Starting in..." : "Working")
     const [remainingSets, setRemainingSets] = useState<number>(sets)
     const [timeLeft, setTimeLeft] = useState(prepTime ? prepTime : workTime)
@@ -53,10 +54,17 @@ export default function TimerMenuV2({sets, prepTime, restTime, workTime, clr}: T
 
      // Edge case: the last work phase
      if (remainingSets == 0) {
-            setCurrentPhase(prepTime ? "Starting in..." : "Working")
-            setTimeLeft(prepTime ? prepTime : workTime)
+
+            setCurrentPhase("Finished")
             setIsPlaying(false)
-            setRemainingSets(sets)
+            const timeout = setTimeout( () => {
+                setCurrentPhase(prepTime ? "Starting in..." : "Working")
+                setTimeLeft(prepTime ? prepTime : workTime)
+                setIsPlaying(false)
+                setRemainingSets(sets)
+            }, 2000)
+
+            return () => clearTimeout(timeout)
       }
 
     if (timeLeft != 0) return;
@@ -88,8 +96,17 @@ export default function TimerMenuV2({sets, prepTime, restTime, workTime, clr}: T
     return (
         <div className="relative">
 
-           
-            
+            {currentPhase == "Finished" && (
+
+                    <div 
+                    style ={{backgroundColor: `${clr}`}}
+                    className=" flex items-center rounded-md justify-center m-auto z-2 absolute h-[100%] w-[100%]  text-5xl"> 
+                        Well done
+                    </div>
+
+
+            ) 
+            }
 
             {/* Title */}
             <div  className="flex flex-col rounded-md p-2" style ={{border: `0.5px dashed ${clr}`}}>
